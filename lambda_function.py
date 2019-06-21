@@ -2,7 +2,6 @@ import boto3
 import os, sys
 import json
 import requests
-from datetime import datetime
 from datetime import date, datetime, timedelta
 import boto3
 from boto3.dynamodb.conditions import Key, Attr
@@ -79,7 +78,7 @@ def dynamo_insert(dynamodb, table, aws_total):
         }
     )
 
-#昨日の金額以上かどうかを判断するタスク
+#昨日の金額
 def check_day_cost(dynamodb, table, aws_total):
     total = round(float(aws_total['billing']), 2)
     total = str(total)
@@ -95,7 +94,7 @@ def check_day_cost(dynamodb, table, aws_total):
     Comparison = round(float((total - total_yesterday) / total_yesterday * 100), 2)
     return Comparison
 
-#月平均以上かどうかを判断するタスク
+#月平均
 def check_month_cost(dynamodb, table, aws_total):
     total = round(float(aws_total['billing']), 2)
     total = str(total)
