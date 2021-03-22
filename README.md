@@ -1,0 +1,4 @@
+# aws_cost_lambda
+aws_cost
+
+AWSコストエクスプローラとboto3を使用した料金請求内容のslack通知
